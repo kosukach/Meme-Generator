@@ -1,0 +1,221 @@
+.logo{
+    height: 3rem;
+    width: 4rem; 
+    margin: none;
+ }
+ #memeGrid{
+    
+    display: grid;
+    margin: 3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    
+ }
+ .meme-img{
+    height: 14rem;
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    
+ }
+ #footer{
+    border-top: 5px solid #343A40;
+    background: #343A40;
+    color: #d4d4d4;
+  }
+ #footer hr{
+    width: 75%;
+    border-top: 1px solid #c3c3c3;
+ }
+ .pop{
+    position: fixed; 
+    width: 70rem;
+    height: 36rem;
+    z-index: 1;
+    left: 50%;
+    margin-left: -35rem; 
+    bottom: 3rem;
+    display: none;
+    grid-template-areas: 
+       "img img title"
+       "img img edit"
+       "img img edit"
+       "img img edit"
+       "img img settings"; 
+    
+ }
+ .pop-title{
+    margin-top: 1rem;
+    grid-area: title;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+ }
+ .x-btn{
+   cursor: pointer;
+ }
+ .pop-meme{
+    /*height: 34rem;
+    width: 40rem;*/
+    grid-area: img;
+ }
+ 
+ .pop-edit{
+    
+    grid-area: edit;
+    overflow-y: auto;
+    height: 19rem;
+ }
+ .btn-append{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-left: 0;
+ }
+ .btn-prepend{
+    margin-right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+ }
+ .input-grid {
+    grid-area: settings;
+    height: 12rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+       "buttons buttons buttons buttons" 
+       "font font font size"
+       "col col outline outline";
+ }
+ .buttons{
+    grid-area: buttons;
+ }
+ .title{
+    width: 100%;
+    
+    display: block;
+    margin: 0;
+ }
+ .font-size-input{
+    grid-area: size;
+ }
+ 
+ .px-add{
+    max-height: 2.35rem;
+ }
+ 
+ .font-input{
+    grid-area: font;
+   
+ }
+ .drop_btn { /* This is for styling the dropdown button */
+    cursor: pointer;
+ }
+ .drop { 
+    display: inline-block;
+    position: relative;
+ }
+   
+ .drop-content { /* For styling the content itself */
+    max-height: 12rem;
+    min-width: 10rem;
+    display: none;
+    position: absolute;
+    overflow-y: scroll;
+    z-index: 2;
+ 
+ }
+  
+ .drop-content a { /* For styling the links inside the content */
+    color: black;
+    padding: 5px;
+    display: block;
+ }
+ .font-color{
+    
+    grid-area: col;
+ }
+ .font-outline{
+    grid-area: outline;
+ }
+ .set-badge{
+    max-height: 2.35rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    
+ }
+ 
+ .cardTitle{
+    height: 3rem;
+ }
+ canvas{
+    border: 3px solid black;
+    margin: auto;
+    
+ }
+
+@media (max-width: 992px ){
+   #memeGrid{
+      grid-template-columns: 1fr 1fr;
+   }
+   
+}
+
+@media(max-width: 1070px){
+   .pop{
+      position: fixed;
+      width: 50rem;
+      height: 36rem;
+      left: 50%;
+      display: grid;
+      margin-left: -25rem; 
+      top: 1rem;
+      grid-template-areas: 
+      "title"
+      "img"
+      "edit"
+      "settings";
+      overflow-y: auto;
+   }
+}
+@media (max-width: 810px ){
+   #memeGrid{
+      grid-template-columns: 1fr 1fr;
+   }
+   .pop{
+      position: fixed;
+      width: 36rem;
+      height: 36rem;
+      left: 50%;
+      display: grid;
+      margin-left: -18rem; 
+      top: 1rem;
+      grid-template-areas: 
+      "title"
+      "img"
+      "edit"
+      "settings";
+      overflow-y: auto;
+   }
+}
+@media (max-width: 550px){
+   #memeGrid{
+      grid-template-columns: 1fr;
+   }
+   .pop{
+      position: fixed;
+      width: 30rem;
+      height: 36rem;
+      left: 50%;
+      display: grid;
+      margin-left: -15rem; 
+      top: 1rem;
+      grid-template-areas: 
+      "title"
+      "img"
+      "edit"
+      "settings";
+      overflow-y: auto;
+   }
+}

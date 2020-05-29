@@ -37,7 +37,7 @@
     z-index: 1;
     left: 50%;
     margin-left: -35rem; 
-    bottom: 3rem;
+    bottom: 1rem;
     display: none;
     grid-template-areas: 
        "img img title"

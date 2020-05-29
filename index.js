@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
-const fs = require("fs");
+
 const memes = require("./routers/memes");
-const multer = require("multer");
+
 
 
 

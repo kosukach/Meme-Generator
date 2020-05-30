@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const memeSchema = new mongoose.Schema({
     name: {
@@ -19,4 +19,4 @@ const memeSchema = new mongoose.Schema({
 
 const Meme = mongoose.model("Meme", memeSchema);
 
-module.exports.Meme = Meme;
+export default Meme;

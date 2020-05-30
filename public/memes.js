@@ -1,5 +1,4 @@
-console.log($(window).width());
-
+const axios = require('axios');
 var poped = false;
 
 //global settings
@@ -17,16 +16,18 @@ let fontColor;
 let fontOutline;
 var textBoxes = [];
 $("document").ready(()=>{
-    fetch("http://localhost:5000/memes")
+    axios.get("/memes")
+    .then((res)=>{renderMeme(res.data);});
+    /*fetch("http://localhost:5000/memes")
         .then((res)=> {return res.json();})
-        .then((res)=>{renderMeme(res);});
+        .then((res)=>{renderMeme(res);});*/
 
     $("body").on("click", removePopUp);
     
 });
 
 const root = document.getElementById("root");
-const grid = document.getElementById("memeGrid");
+
 
 function removePopUp(){
     if(!poped){
@@ -41,9 +42,9 @@ function removePopUp(){
         return;
     }
 }
+global.removePopUp = removePopUp;
 
-
-function handleClick(name, textInfo, img){
+global.handleClick = function(name, textInfo, img){
     
     if(poped){
         const pop = document.getElementsByClassName("pop")[0];
@@ -166,7 +167,8 @@ function renderTextBox(textInfo){
 
 let str;
 function renderMeme(res){
-    grid.innerHTML = "";
+    let refresh = ""
+    let grid = document.getElementById("memeGrid");
     res.map(item => {
         str = "[";
         item.textInfo.map( element => {
@@ -180,12 +182,13 @@ function renderMeme(res){
     
     str+= "]";
         
-        grid.innerHTML += `<div class="containter-fluid card" onclick="handleClick('${item.name}' , ${str}, '${item.img}')" >
+        refresh += `<div class="containter-fluid card" onclick="handleClick('${item.name}' , ${str}, '${item.img}')" >
             <h3 class="card-title" >${item.name}</h3>
             <img src="./images/${item.img}" class= "card-img-bottom meme-img" >
         </div>`;
     });
-
+    grid.innerHTML = refresh;
+    console.log(grid.innerHTML)
 }
 
 function canvasFunc(img, textInfo){
@@ -562,23 +565,29 @@ function renderSettings(){
 }
 
 function searchFunc(){
-    let searchBar = document.getElementById("searchBar");
     
-    fetch(`http://localhost:5000/memes/${searchBar.value}`)
+    let searchBar = document.getElementById("searchBar");
+    console.log(searchBar.value);
+    /*fetch(`http://localhost:5000/memes/${searchBar.value}`)
         .then((res)=> {return res.json();})
-        .then((res)=>{renderMeme(res);});
+        .then((res)=>{renderMeme(res);});*/
+    axios.get(`/memes/${searchBar.value}`)
+        .then(res => {console.log(res); return res})
+        .then((res)=>{renderMeme(res.data);})
+        
 }
+global.searchFunc = searchFunc;
 
-preventFunc = (event)=> {
-    event.preventDefault();
-    var keyCode = event.keyCode || event.which;
+function preventFunc(e){
+    e.preventDefault();
+    var keyCode = e.keyCode || e.which;
     if (keyCode == '13'){
         
         return false;
     }
     
 };
-
+global.preventFunc = preventFunc;
 function mouseFunct(){
     
     window.addEventListener("mousemove", function(event){ 

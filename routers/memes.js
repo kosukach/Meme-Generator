@@ -1,6 +1,6 @@
-const express = require("express");
-const { Meme } = require("../models/meme");
-const router = express.Router();
+import express from "express"
+import Meme from "../models/meme.js"
+const router =express.Router();
 
 
 
@@ -33,4 +33,5 @@ router.get("/:string", async(req, res)=>{
 
 });
 
-module.exports = router;
+//module.export = router;
+export default router;

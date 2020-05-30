@@ -1,15 +1,12 @@
-const express = require("express");
+import express from "express";
+import mongoose from "mongoose";
+import config from "config";
+import memes from "./routers/memes.js";
+/*const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
-
-const memes = require("./routers/memes");
-
-
-
-
-
+const memes = require("./routers/memes");*/
 const app = express();
-
 
 app.use(express.static("./public"));
 app.use(express.json());
@@ -19,10 +16,6 @@ mongoose.connect(process.env.MONGODB_URI || config.get("db"), { useNewUrlParser:
   .then(() => console.log(`Connected to ${config.get("db")}...`))
   .catch((ex)=> console.log(ex));
 
-
-let  port = process.env.PORT || 5000;
+let  port = process.env.PORT || 8080;
 app.listen(port, ()=> {console.log(`listening on port ${port}`);});
 
-if(process.env.NODE_ENV == "production"){
-  
-}

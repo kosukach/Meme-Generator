@@ -2,7 +2,10 @@
   "name": "public",
   "version": "1.0.0",
   "description": "",
-  "main": "memes.mjs",
+  "main": "memes.js",
+  "engines": {
+    "node": "13.14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify memes.js -o app.js"

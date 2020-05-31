@@ -12,7 +12,8 @@ const memeSchema = new mongoose.Schema({
     textInfo: [{
         x: Number,
         y: Number,
-        lineWidth: Number
+        height: Number,
+        width: Number
     }]
     
 });

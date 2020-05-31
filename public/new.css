@@ -8,7 +8,7 @@
     display: grid;
     margin: 3rem;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    
+    top: 1rem;
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
     
@@ -32,20 +32,21 @@
  }
  .pop{
     position: fixed; 
-    width: 70rem;
-    height: 36rem;
+    width: 60rem;
+    height: 33rem;
+    max-width:100%;
+    max-height:100%;
     z-index: 1;
+    top: 1.5rem;
     left: 50%;
-    margin-left: -35rem; 
-    bottom: 1rem;
+    margin-left: -30rem; 
     display: none;
     grid-template-areas: 
        "img img title"
        "img img edit"
-       "img img edit"
-       "img img edit"
+       "img img settings"
        "img img settings"; 
-    
+    overflow: auto;
  }
  .pop-title{
     margin-top: 1rem;
@@ -66,7 +67,7 @@
     
     grid-area: edit;
     overflow-y: auto;
-    height: 19rem;
+    height: 10rem;
  }
  .btn-append{
     border-top-left-radius: 0px;
@@ -79,9 +80,11 @@
     border-bottom-right-radius: 0px;
  }
  .input-grid {
+    margin-top: 0;
     grid-area: settings;
-    height: 12rem;
+    height: 10rem;
     display: grid;
+    align-self: top;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:
        "buttons buttons buttons buttons" 
@@ -102,7 +105,7 @@
  }
  
  .px-add{
-    max-height: 2.35rem;
+    max-height: 1;
  }
  
  .font-input{
@@ -140,7 +143,7 @@
     grid-area: outline;
  }
  .set-badge{
-    max-height: 2.35rem;
+    max-height: 1rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     
@@ -217,5 +220,21 @@
       "edit"
       "settings";
       overflow-y: auto;
+   }
+}
+
+@media (min-height: 400px){
+   .pop{
+      top: 0.25rem
+   }
+}
+@media (min-height: 500px){
+   .pop{
+      top: 0.75rem
+   }
+}
+@media (min-height: 610px){
+   .pop{
+      top: 1.5rem
    }
 }

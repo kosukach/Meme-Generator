@@ -188,7 +188,6 @@ function renderMeme(res){
         </div>`;
     });
     grid.innerHTML = refresh;
-    console.log(grid.innerHTML)
 }
 
 function canvasFunc(img, textInfo){
@@ -442,7 +441,6 @@ function canvasFunc(img, textInfo){
         let container = document.getElementById("textBoxContainer");
         
         for(let i = 0; i<textInfo.length; i++){
-            console.log(container.children[i].children[0].value);
             out = out.concat(`
             <div class="input-group mb-3">
                 <input class="form-control ml-1 mr-1" type="text" id="textBox${i}" placeholder="Text" value="${
@@ -567,12 +565,10 @@ function renderSettings(){
 function searchFunc(){
     
     let searchBar = document.getElementById("searchBar");
-    console.log(searchBar.value);
     /*fetch(`http://localhost:5000/memes/${searchBar.value}`)
         .then((res)=> {return res.json();})
         .then((res)=>{renderMeme(res);});*/
     axios.get(`/memes/${searchBar.value}`)
-        .then(res => {console.log(res); return res})
         .then((res)=>{renderMeme(res.data);})
         
 }

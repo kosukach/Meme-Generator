@@ -95,7 +95,6 @@ function renderMeme(res) {
     refresh += "<div class=\"containter-fluid card\" onclick=\"handleClick('".concat(item.name, "' , ").concat(str, ", '").concat(item.img, "')\" >\n            <h3 class=\"card-title\" >").concat(item.name, "</h3>\n            <img src=\"./images/").concat(item.img, "\" class= \"card-img-bottom meme-img\" >\n        </div>");
   });
   grid.innerHTML = refresh;
-  console.log(grid.innerHTML);
 }
 
 function canvasFunc(img, textInfo) {
@@ -328,7 +327,6 @@ function canvasFunc(img, textInfo) {
     var container = document.getElementById("textBoxContainer");
 
     for (var i = 0; i < textInfo.length; i++) {
-      console.log(container.children[i].children[0].value);
       out = out.concat("\n            <div class=\"input-group mb-3\">\n                <input class=\"form-control ml-1 mr-1\" type=\"text\" id=\"textBox".concat(i, "\" placeholder=\"Text\" value=\"").concat(container.children[i].children[0].value, "\"/>\n            </div>\n            "));
     }
 
@@ -424,15 +422,11 @@ function renderSettings() {
 
 function searchFunc() {
   var searchBar = document.getElementById("searchBar");
-  console.log(searchBar.value);
   /*fetch(`http://localhost:5000/memes/${searchBar.value}`)
       .then((res)=> {return res.json();})
       .then((res)=>{renderMeme(res);});*/
 
   axios.get("/memes/".concat(searchBar.value)).then(function (res) {
-    console.log(res);
-    return res;
-  }).then(function (res) {
     renderMeme(res.data);
   });
 }

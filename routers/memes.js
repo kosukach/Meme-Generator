@@ -21,7 +21,10 @@ router.post("/", async( req, res)=>{
     meme.save();
     res.send(meme);
 });
-
+router.delete("/:name", async(req, res)=> {
+    const meme = await Meme.findOneAndRemove({name: req.params.name});
+    res.send(meme);
+})
 router.get("/:string", async(req, res)=>{
     const regex = new RegExp(`.*${req.params.string}.*`, "gi");
     const memes = await Meme.find().or([
